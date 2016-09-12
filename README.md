@@ -1,6 +1,6 @@
 # ts-smart-logger
 
-The implementation of logger for TypeScript (TS 2 compatible).
+An implementation of logger at TypeScript (TS 2 compatible).
 
 ## Installation
 
