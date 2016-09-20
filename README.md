@@ -14,9 +14,11 @@ npm install ts-smart-logger --save
 **main.ts**
 ```typescript
 // Configure the logger before loading the all internal classes
-import {LoggerFactory} from 'ts-smart-logger';
+import {LoggerFactory} from 'ts-smart-logger/index';
 
 LoggerFactory.configure();
+// or
+LoggerFactory.configure({"logLevel": 3});
 // or
 LoggerFactory.configure(require('./config/log/default.json'));
 // or
