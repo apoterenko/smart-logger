@@ -29,13 +29,19 @@ export class LoggerFactory {
     public static configure(outerConfig?:{new ():ILoggerConfig}|ILoggerConfig) {
         const storedLoggerConfig:ILoggerConfig = this.tryGetFromStorage();
 
+        // Clear all previous config
+        for (const prop of Object.keys(this.config)) {
+            delete this.config[prop];
+        }
+
         // Formation of configuration based on the priority:
         //
         // The first priority: the config from localStorage
         // The second priority: the config from outer file
         // The third priority: the local config at current class
 
-        this.config = Object.assign(
+        Object.assign(
+            this.config,
             {logLevel: LoggerLevelEnum.DEBUG_LEVEL},
             Utils.isFunction(outerConfig) ? new (outerConfig as {new ():ILoggerConfig})() : outerConfig,
             storedLoggerConfig
