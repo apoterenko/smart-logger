@@ -27,7 +27,8 @@ LoggerFactory.configure(require('./config/log/ProductionLoggerConfig').Productio
 **LoggedFirstClass.ts**
 ```typescript
 class LoggedFirstClass {
-   private logger:ILogger = LoggerFactory.makeLogger(LoggedFirstClass);
+   private logger = LoggerFactory.makeLogger(LoggedFirstClass);
+   // private logger = LoggerFactory.makeLogger('LoggedFirstClass');    // In the case of "uglify" using
 
    public logAtFirstClass() {
        this.logger.info(1);                                    // <=> console.info(1);
